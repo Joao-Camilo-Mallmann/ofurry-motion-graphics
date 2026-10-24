@@ -1,0 +1,150 @@
+{
+  "id": "demo-gancho-trecho-01",
+  "duration": 47,
+  "fps": 30,
+  "audio": "midia/narracao.wav",
+  "subtitlePath": "midia/narracao.vtt",
+  "cardOptions": {
+    "maxWords": 2,
+    "maxChars": 16
+  },
+  "captions": [
+    {
+      "from": 4.4,
+      "until": 11.6,
+      "entry": "whip"
+    },
+    {
+      "from": 11.6,
+      "until": 12.7,
+      "entry": "pop",
+      "y": 0.72
+    },
+    {
+      "from": 12.7,
+      "until": 17.7,
+      "entry": "whip"
+    },
+    {
+      "from": 26.7,
+      "until": 32.7,
+      "entry": "whip"
+    },
+    {
+      "from": 43.6,
+      "until": 46.9,
+      "entry": "pop",
+      "y": 0.72
+    }
+  ],
+  "backdrops": [
+    {
+      "at": 0,
+      "backdrop": "grid"
+    },
+    {
+      "at": 4.4,
+      "backdrop": "stars"
+    },
+    {
+      "at": 12.7,
+      "backdrop": "black"
+    },
+    {
+      "at": 21.5,
+      "backdrop": "grid"
+    },
+    {
+      "at": 32.7,
+      "backdrop": "black"
+    },
+    {
+      "at": 37.7,
+      "backdrop": "stars"
+    }
+  ],
+  "beats": [
+    {
+      "kind": "type-on",
+      "at": 0.25,
+      "until": 2.2,
+      "text": "Quanto custa a sua liberdade?"
+    },
+    {
+      "kind": "type-on",
+      "at": 2.25,
+      "until": 4.3,
+      "text": "E o seu futuro?",
+      "eraseAt": 3.25
+    },
+    {
+      "kind": "icon",
+      "at": 11.6,
+      "until": 12.7,
+      "icon": "bitcoin",
+      "tone": "brand",
+      "y": 0.36
+    },
+    {
+      "kind": "thumb",
+      "at": 17.7,
+      "until": 21.5,
+      "src": "midia/thumb.jpg"
+    },
+    {
+      "kind": "mascot",
+      "at": 22.4,
+      "until": 26.7,
+      "placement": "center",
+      "nameTag": true,
+      "poses": [
+        {
+          "at": 22.4
+        },
+        {
+          "at": 25.0
+        }
+      ]
+    },
+    {
+      "kind": "proof",
+      "at": 32.7,
+      "until": 37.6,
+      "highlight": [
+        0.08,
+        0.12,
+        0.7,
+        0.18
+      ],
+      "highlightAt": 34
+    },
+    {
+      "kind": "icons",
+      "at": 37.75,
+      "until": 43.5,
+      "items": [
+        {
+          "icon": "circle-help",
+          "at": 37.75
+        },
+        {
+          "icon": "trending-up",
+          "at": 39.5,
+          "tone": "gain"
+        },
+        {
+          "icon": "earth",
+          "at": 41.5
+        }
+      ]
+    },
+    {
+      "kind": "icon",
+      "at": 45.7,
+      "until": 47,
+      "icon": "bitcoin",
+      "tone": "brand",
+      "y": 0.36
+    }
+  ]
+}

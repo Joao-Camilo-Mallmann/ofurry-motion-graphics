@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vincentwei1021.github.io/video-shotcraft/sitemap.xml

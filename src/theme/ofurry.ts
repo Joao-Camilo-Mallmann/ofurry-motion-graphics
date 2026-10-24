@@ -52,6 +52,7 @@ export const OFurryTheme = {
       condensed: `'Bebas Neue', sans-serif`,
       conceptual: `'Syne', sans-serif`,
       tech: `'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Mono', monospace, sans-serif`,
+      mono: `'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Mono', monospace, sans-serif`,
       body: `'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif`,
       montserrat: `'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif`,
       display: `'Archivo Black', sans-serif`,

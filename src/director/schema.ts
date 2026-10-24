@@ -159,6 +159,7 @@ export const ArtDirectionSchema = z.object({
   mood: z.enum(['aggressive-alert', 'optimistic-growth', 'analytical-tech', 'mysterious-reveal']).optional(),
   visualMetaphor: z.string().optional().describe('Visual representation concept'),
   overridePrompt: z.string().optional().describe('Custom visual direction requested by user'),
+  presetId: z.string().optional().describe('Video-Shotcraft V1 Preset ID (e.g. cel-flash-stomp, basic-3d-scene)'),
 });
 
 // ADR-004 6 Layout Silhouettes + Legacy compatibility
@@ -191,6 +192,7 @@ export const SceneSpecSchema = z.object({
   id: z.string(),
   durationInFrames: z.number().min(15).default(90),
   layout: LayoutSilhouetteSchema.default('monumental-hero'),
+  presetId: z.string().optional().describe('Optional Video-Shotcraft V1 Preset ID'),
   choreography: ChoreographySchema.default({
     entryDirection: 'bottom-up',
     drawSpeed: 'snappy',

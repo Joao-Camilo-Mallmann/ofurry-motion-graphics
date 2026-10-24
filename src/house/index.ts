@@ -1,0 +1,11 @@
+export * from './theme';
+export * from './captions';
+export * from './motion';
+export * from './backdrops';
+export * from './elements';
+export * from './KineticCaptions';
+export * from './HouseTimeline';
+export * from './lint';
+export { AnimatedLucide } from '../lucide-animated/AnimatedLucide';
+export { LUCIDE_ANIMATED_NAMES } from '../lucide-animated/icons';
+export type { LucideAnimatedName } from '../lucide-animated/icons';

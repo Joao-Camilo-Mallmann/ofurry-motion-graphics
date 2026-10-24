@@ -1,6 +1,6 @@
 ---
 name: director-orchestrator
-description: Directs and orchestrates incremental editorial motion design productions for OFurry by transforming script sections into cinematic shot proposals using motion-design and video-shotcraft, enforcing anti-AI/anti-SaaS aesthetics on native alpha with zero premature code.
+description: Directs and orchestrates incremental editorial motion design productions for OFurry by transforming script sections into cinematic shot proposals using motion-design and the camera presets in src/presets, enforcing anti-AI/anti-SaaS aesthetics on native alpha with zero premature code.
 license: MIT
 metadata:
   author: OFurry Motion Lab
@@ -12,6 +12,12 @@ metadata:
 Skill oficial de **Direção Criativa e Curadoria Editorial Cinematográfica** para produção de mini-vídeos em Motion Design com canal Alpha transparente para o canal do YouTube **OFurry**.
 
 ---
+
+> [!IMPORTANT]
+> **Estilo da casa primeiro.** Antes de propor qualquer plano, leia `.agents/skills/ofurry-house-motion/SKILL.md`.
+> Ela descreve o visual que o canal de fato publica (medido nos 7 videos) e vence qualquer regra desta skill
+> que entre em conflito (tipografia, tamanho de legenda, uso do mascote, cores). O checkpoint em prosa
+> continua obrigatorio; a implementacao passa a ser uma folha de batidas do kit `src/house/`.
 
 ## 1. PAPEL DA SKILL
 
@@ -43,21 +49,23 @@ A resposta principal da skill deve apresentar exclusivamente o **Plano Visual Ed
 
 ## 2. MOTORES VISUAIS OBRIGATÓRIOS
 
-Para criar as propostas visuais, utilize obrigatoriamente a combinação de duas skills essenciais:
+Para criar as propostas visuais, utilize obrigatoriamente a combinação de três skills essenciais:
 
 1. **`motion-design`** (Física e Comportamento Editorial)
-2. **`video-shotcraft`** (Cinematografia e Linguagem de Câmera)
+2. **Presets de câmera** em `src/presets/` (Cinematografia e Linguagem de Câmera; a skill `video-shotcraft` foi removida em 2026-10, catálogo em `docs/presets/shotcraft-v1.md`)
+3. **`icon-craft`** (Metáforas Físicas, Ícones & Simbolismo de Mercado)
 
 ### Divisão de Responsabilidades:
 
 | Motor | Responsabilidade | Ferramental |
 |---|---|---|
-| **`motion-design`** | Física, dinâmica e autoridade tipográfica | • Damped springs (`snappy`, `smooth-draw`)<br>• Overshoot e settle calibrados<br>• Escala monumental (130-160px texto, 200-240px números)<br>• 3 camadas de movimento (Primary Hero, Secondary Highlight, Ambient Alpha)<br>• Timing de retenção (0-15f snap, 15-final hold com micro-drift) |
-| **`video-shotcraft`** | Câmera, espaço e cinematografia | • Câmera 2.5D (tilt, perspective 1000px, parallax drift)<br>• Enquadramentos dinâmicos (push-in, crash zoom, orbit, whip-pan)<br>• Catálogo de 157 shot recipe cards (`references/shots/`)<br>• Ritmo, cadência e cortes motivados por ação<br>• Sound Design com SFX pontuais (`assets/audio/sfx/`) |
+| **`motion-design`** | Física, dinâmica e autoridade tipográfica | • Damped springs (`snappy`, `smooth`)<br>• Overshoot e settle calibrados<br>• Escala monumental (130-160px texto, 200-240px números)<br>• 3 camadas de movimento (Primary Hero, Secondary Highlight, Ambient Alpha)<br>• Timing de retenção (0-15f snap, 15-final hold com micro-drift) |
+| **Presets de câmera (`src/presets/`)** | Câmera, espaço e cinematografia | • Câmera 2.5D (tilt, perspective 1000px, parallax drift)<br>• Enquadramentos dinâmicos (push-in, crash zoom, orbit, whip-pan)<br>• 31 presets auditados com composições `Preset-XX-*` no Studio<br>• Ritmo, cadência e cortes motivados por ação<br>• SFX: `.agents/skills/media-use/audio/assets/sfx/` |
+| **`icon-craft`** | Metáforas físicas tangíveis e símbolos | • Catálogo de 55 ícones físicos (`public/icons/`)<br>• Alto contraste no canal Alpha via `<AssetIcon />`<br>• Inversão de pretos para branco (`variant="white"`), neon orange (`variant="orange"`), nativo (`variant="original"`)<br>• 1 ícone monumental dominante (140-300px) ou âncora travada à métrica |
 
-A `director-orchestrator` funde esses dois motores:
+A `director-orchestrator` funde esses três motores:
 > **A pergunta principal da skill nunca é:** *"Qual layout devo colocar?"*
-> **A pergunta principal é sempre:** *"Qual plano cinematográfico melhor comunica esta frase?"*
+> **A pergunta principal é sempre:** *"Qual plano cinematográfico e metáfora física melhor comunicam esta frase?"*
 
 ---
 
@@ -77,26 +85,34 @@ A identidade visual do canal OFurry deve permanecer brutalista, editorial e cine
 - Tabelas estilizadas
 - Excesso de bordas, divisórias e contornos decorativos
 - Tags sci-fi clichês ("SYS.SCAN", "DATA.LOG // 01")
+- **LAYOUT MONÓTONO EM COLUNA VERTICAL REPETIDA**: Proibido montar todas as cenas com a mesma receita "tag no topo → ícone no meio → título → tarja laranja no rodapé". Isso gera sensação de template genérico sem dinamismo.
 
-### ✅ PREFERIR OBRIGATORIAMENTE:
-- **1 único objeto/número dominante no frame**
-- **Tipografia monumental solta flutuando diretamente sobre o canal Alpha real**
-- Escala extrema (letras ocupando 70% a 90% da largura útil)
-- **Espaço negativo dramático** (o vazio comanda a atenção)
-- Composição assimétrica equilibrada
-- Movimento de câmera e profundidade 2.5D (Z-axis)
-- Parallax sutil entre elemento dominante e elementos de fundo
-- Colisão mecânica e impacto físico entre elementos
-- Máscaras de revelação (`overflow: hidden` na linha de base)
-- Tracking, zoom, rotação angular motivada por impacto
-- Spring physics com peso real
-- Cortes por movimento e transições motivadas pela ação
+### 🎨 ARQUÉTIPOS VISUAIS OFICIAIS DO OFURRY (Baseados em `docs/RefFurry/`):
+
+Cada cena deve obrigatoriamente adotar um dos 4 arquétipos e **VARIAR ENTRE CENAS CONSECUTIVAS**:
+
+1. **Arquétipo A: Ficha Técnica Neon / Blueprint (`ref1.png`)**:
+   - Ícone outline em neon elétrico vibrante (`variant="green"` `#00FF00` ou `variant="orange"` `#FF9900`).
+   - Título do ativo em caixa alta diretamente abaixo do ícone (ex: `CDB`, `COE`, `LCI`).
+   - Lista limpa de specs em tipografia branca sólida com sinal de igual (`=`), sem caixas ou cards:
+     ```text
+     Taxa = 100% CDI
+     Prazo = 5 anos
+     Condições = Liquidez diária
+     ```
+2. **Arquétipo B: Layered Text Stash / Intersect (`ref2.png`)**:
+   - Métrica ou palavra monumental com preenchimento preto e traço neon espesso de assinatura:
+     `-webkit-text-stroke: 4px #FF9900; color: #000000; font-family: 'Archivo Black';`
+   - O ícone físico (dinheiro, barras de ouro, alarme) fica posicionado **atrás ou intercalado** entre as letras (`zIndex: 0` sob o texto com `zIndex: 1`), espiando com profundidade 2.5D.
+3. **Arquétipo C: Crash Zoom / Word Slam**:
+   - Câmera frontal em crash zoom violento (45 graus), escala monumental extrema (ocupando 85%–90% da largura útil).
+   - Palavra visceral única (`CUSTA CARO`, `PRESO`, `NÃO É GRÁTIS`), colisão mecânica e silêncio tenso.
+4. **Arquétipo D: Split de Tensão / Assimetria (50/50 ou 70/30)**:
+   - Divisão espacial que confronta dois polos (Promessa vs Realidade, Mercado Livre vs Teto Artificial, Entrada vs Deságio).
 
 > [!IMPORTANT]
-> **A Regra de Ouro Anti-Dashboard:**
-> *"Se uma cena puder ser resolvida com um elemento grande se movendo bem, não introduza três elementos pequenos."*
->
-> O espectador deve sentir que está assistindo a uma peça audiovisual e cinematográfica, nunca navegando em uma interface web.
+> **REGRA DA NÃO-REPETIÇÃO ESTRUTURAL:**
+> Duas cenas consecutivas NUNCA podem ter o mesmo arquétipo de composição. Se a Cena 1 for um *Layered Text Stash*, a Cena 2 deve ser uma *Ficha Técnica Neon* ou um *Crash Word Slam*.
 
 ---
 
@@ -195,11 +211,21 @@ Antes de gerar qualquer linha de código TSX, apresente a proposta visual no for
 #### Metáfora Visual
 [Como a ideia é representada fisicamente na tela — ex: um fluxo de dinheiro sofrendo desvio mecânico lateral]
 
+#### Ícone Editorial (Icon Craft)
+- Ícone: `[nome-do-icone | nenhum]` (ex: `bank`, `thief`, `chart-lose`, `wallet`, `warning`, `crash-arrow`)
+- Modo de Cor: `[green (#00FF00) | orange (#FF9900) | white (invert) | original | custom]`
+- Escala & Papel: `[Hero Monumental (200px) | Âncora da Métrica | Carimbo de Alerta | Text Stash]`
+
+#### Arquétipo Visual OFurry (docs/RefFurry/)
+- Arquétipo: `[Ficha Técnica Neon (ref1.png) | Layered Text Stash (ref2.png) | Crash Word Slam | Split Tensão]` *(Obrigatório: DIFERENTE da cena anterior)*
+
 #### Shot
 [Descrição cinematográfica do enquadramento — ex: Plano médio com câmera 2.5D e deslocamento horizontal]
 
-#### Câmera (Video Shotcraft)
-[Receita do Shotcraft: push-in, crash-zoom, tilt 2.5D, parallax drift, orbit sutil]
+#### Câmera & Preset Shotcraft (Video Shotcraft)
+- Preset Shotcraft: `[ID exato de um dos 31 presets da V1 — ex: cel-flash-stomp | basic-3d-scene | title-demote-to-label | pop-burst-confirm | bottom-push-stack-wipe]`
+- Movimento de Câmera: [Receita do Shotcraft: push-in, crash-zoom, tilt 2.5D, parallax drift, orbit sutil]
+- Preview em Vídeo: `public/presets/videos/[preset-id].mp4` (para validação visual)
 
 #### Motion (Motion Design)
 [Física de damped spring, timing 0-15f punch, 15-final hold com micro-drift, zero wobble senoidal]
@@ -227,6 +253,50 @@ Antes de gerar qualquer linha de código TSX, apresente a proposta visual no for
 
 > [!IMPORTANT]
 > **Aguarde a validação do usuário antes de criar os arquivos `.tsx` ou executar renderizações.**
+
+---
+
+## 8.1. CATÁLOGO OFICIAL DOS 31 PRESETS DO VIDEO-SHOTCRAFT (V1)
+
+O Diretor Orquestrador deve selecionar obrigatoriamente um destes **31 presets cinematográficos pré-implementados e auditados** para nortear a cinematografia e o código de cada tomada em `concept.md` e em `scenes/`:
+
+| Preset ID | Categoria | Arquétipo OFurry | Papel Narrativo & Metáfora | Preview em Vídeo |
+|---|---|---|---|---|
+| `basic-3d-scene` | Câmera | A (Blueprint) | Voo de câmera 2.5D conectando premissas de contrato no espaço vazio | `public/presets/videos/basic-3d-scene.mp4` |
+| `cursor-flyover` | Câmera | A (Blueprint) | Câmera 2.5D rasante com cursor neon inspecionando pontos de taxa/contrato | `public/presets/videos/cursor-flyover.mp4` |
+| `blur-slide` | Tipografia | C (Crash Slam) | Revelação suave com blur progressivo e subida de 1 a 3 palavras massivas | `public/presets/videos/blur-slide.mp4` |
+| `brace-expand` | Tipografia | C (Crash Slam) | Chaves `{}` monumentais se abrem em cortina revelando o termo central | `public/presets/videos/brace-expand.mp4` |
+| `cel-flash-stomp` | Tipografia | C (Crash Slam) | Três palavras de soco carimbadas com flashes neon de alto contraste | `public/presets/videos/cel-flash-stomp.mp4` |
+| `countdown-arc-scatter` | Tipografia | B (Layered) | Varredura de números em arco que freia bruscamente no número hero | `public/presets/videos/countdown-arc-scatter.mp4` |
+| `glitch-cycle` | Tipografia | C (Crash Slam) | Ciclo rápido de glitches denunciando distorção de mercado até cravar a verdade | `public/presets/videos/glitch-cycle.mp4` |
+| `paper-title-card` | Tipografia | A (Blueprint) | Cartão com carimbo letterpress editorial e grifo neon sólido | `public/presets/videos/paper-title-card.mp4` |
+| `text-as-mask` | Tipografia | C (Crash Slam) | Tipografia massiva recortada como máscara com zoom 2.5D atravessando a letra | `public/presets/videos/text-as-mask.mp4` |
+| `title-demote-to-label` | Tipografia | B (Layered) | Título massivo encolhe e vira micro-tag enquanto o número 240px emerge | `public/presets/videos/title-demote-to-label.mp4` |
+| `split-text-stagger` | Tipografia | C (Crash Slam) | Mask reveal da baseline por caractere individual saindo do chão | `public/presets/videos/split-text-stagger.mp4` |
+| `scramble-decode` | Tipografia | A (Blueprint) | Decodificador alfanumérico rápido travando caractere por caractere com flash | `public/presets/videos/scramble-decode.mp4` |
+| `word-relay-filmstrip` | Tipografia | D (Split Tensão) | Split 50/50 com sujeito estático e carretel vertical de verbos de impacto | `public/presets/videos/word-relay-filmstrip.mp4` |
+| `counter-confetti` | Métricas | B (Layered) | Contador de alta velocidade que dispara choque e faíscas neon no lock-in | `public/presets/videos/counter-confetti.mp4` |
+| `ring-diagram-annotation-reveal` | Métricas | A (Blueprint) | Anéis concêntricos SVG de partição de capital deslizando e abrindo anotações | `public/presets/videos/ring-diagram-annotation-reveal.mp4` |
+| `timeline-travel` | Métricas | A (Blueprint) | Câmera horizontal percorrendo anos de contrato com freadas em marcos críticos | `public/presets/videos/timeline-travel.mp4` |
+| `value-stagger-gradient` | Métricas | B (Layered) | Cascata de barras em gradiente demonstrando erosão e degradação de retorno | `public/presets/videos/value-stagger-gradient.mp4` |
+| `beat-step-list-theme-cycle` | Efeitos | D (Split Tensão) | Avanço vertical ritmado no beat com captura em tarja neon sólida e squash pop | `public/presets/videos/beat-step-list-theme-cycle.mp4` |
+| `bezier-source-converge-merge` | Efeitos | A (Blueprint) | Fontes de capital convergem por curvas neon num único ralo financeiro | `public/presets/videos/bezier-source-converge-merge.mp4` |
+| `panel-to-canvas` | Efeitos | B (Layered) | Linha de contrato se desprende e materializa um bloco de alerta físico 2.5D | `public/presets/videos/panel-to-canvas.mp4` |
+| `card-stack` | Efeitos | B (Layered) | Pilha de opções de ativos pop in e se abrem em leque 3D com destaque no COE | `public/presets/videos/card-stack.mp4` |
+| `pop-burst-confirm` | Efeitos | B (Layered) | Ícone monumental sofre compressão física e estoura com anel de choque e partículas | `public/presets/videos/pop-burst-confirm.mp4` |
+| `list-reveal` | Efeitos | A (Blueprint) | Ficha técnica Blueprint com linhas surgindo em scale outBack e micro-drift contínuo | `public/presets/videos/list-reveal.mp4` |
+| `product-card-progressive-assemble` | Efeitos | A (Blueprint) | Ficha de produto com redaction de ganho prometido e revelação do ganho real | `public/presets/videos/product-card-progressive-assemble.mp4` |
+| `radial-ripple-phone-chips` | Efeitos | B (Layered) | Ondas acústicas neon concêntricas disparando tags de alerta lateral | `public/presets/videos/radial-ripple-phone-chips.mp4` |
+| `research-card-stack-scroll` | Efeitos | A (Blueprint) | Pilha descendente de provas forenses empilhadas com profundidade de campo | `public/presets/videos/research-card-stack-scroll.mp4` |
+| `segmented-thumb-hero` | Efeitos | D (Split Tensão) | Seletor monumental alternando de Promessa para Realidade com estalo neon | `public/presets/videos/segmented-thumb-hero.mp4` |
+| `skeleton-reveal` | Efeitos | A (Blueprint) | Ossatura técnica em linhas tracejadas que se cristaliza em evidência neon sólida | `public/presets/videos/skeleton-reveal.mp4` |
+| `svg-shape-morph` | Efeitos | B (Layered) | Metamorfose orgânica contínua de contorno neon ilustrando a transmutação do risco | `public/presets/videos/svg-shape-morph.mp4` |
+| `icon-flip-bloom` | Efeitos | B (Layered) | Ícone gira em 3D no eixo Y, atinge a lâmina zero e desabrocha no logo OFURRY com bloom | `public/presets/videos/icon-flip-bloom.mp4` |
+| `bottom-push-stack-wipe` | Transição | Transição | Nova cena empurra fisicamente a anterior de baixo para cima como cremalheira mecânica | `public/presets/videos/bottom-push-stack-wipe.mp4` |
+
+> [!TIP]
+> **Como Implementar uma Tomada a partir do Preset:**
+> Quando o usuário aprovar o Checkpoint Editorial, a implementação em `scenes/0X-nome.tsx` pode instanciar diretamente o preset de `src/presets` (ex: `<CelFlashStompPreset words={[...]} />` ou `<TitleDemoteToLabelPreset hookTitle="..." heroMetric="..." />`) ou customizá-lo mantendo seus parâmetros de câmera e física.
 
 ---
 

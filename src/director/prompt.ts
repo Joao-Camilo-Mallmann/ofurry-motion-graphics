@@ -70,6 +70,47 @@ DEFINIÇÃO DO ANCHORTO E COMPOSITIONBRIDGE:
 }
 
 =========================================
+CATÁLOGO OFICIAL DE 31 PRESETS VIDEO-SHOTCRAFT (V1):
+=========================================
+Toda cena pode vincular ou se inspirar diretamente em um dos 31 presets auditados do OFurry Engine (src/presets/shots/):
+- Câmera 2.5D:
+  * basic-3d-scene (Voo 2.5D conectando cláusulas)
+  * cursor-flyover (Câmera rasante com cursor inspecionando taxa)
+- Tipografia Cinética:
+  * blur-slide (Texto que desembaça e desliza com spring seco)
+  * brace-expand (Chaves monumentais abrindo o termo)
+  * cel-flash-stomp (Flash brutal em corte seco e impacto monumental)
+  * countdown-arc-scatter (Contagem com arco dispersor)
+  * glitch-cycle (Filtro glitch analógico de alerta de fraude)
+  * paper-title-card (Cartão de documento técnico)
+  * text-as-mask (Texto monumental como máscara de silhueta)
+  * title-demote-to-label (Título que vira micro-label ao entrar número hero)
+  * split-text-stagger (Letras desmembradas em cascata rápida)
+  * scramble-decode (Decodificação de caracteres técnicos)
+  * word-relay-filmstrip (Rolagem vertical filmstrip de palavras de soco)
+- Dados & Métricas:
+  * counter-confetti (Métrica atingindo valor com partículas neon)
+  * ring-diagram-annotation-reveal (Gráfico circular com linhas de líder de taxas)
+  * timeline-travel (Linha do tempo de corrosão patrimonial)
+  * value-stagger-gradient (Métricas em escada progressiva)
+- Efeitos & Metáforas:
+  * beat-step-list-theme-cycle (Ciclo rítmico de argumentos no beat)
+  * bezier-source-converge-merge (Fluxos de comissão convergindo para um ponto)
+  * panel-to-canvas (Documento desdobrando no espaço livre)
+  * card-stack (Pilha física de papéis de contrato)
+  * pop-burst-confirm (Carimbo de alerta com explosão geométrica)
+  * list-reveal (Itens de contrato revelados em cascata)
+  * product-card-progressive-assemble (Estrutura de investimento montando peças)
+  * radial-ripple-phone-chips (Ondas concêntricas de alerta)
+  * research-card-stack-scroll (Rolagem de evidências documentais)
+  * segmented-thumb-hero (Frame com divisores técnicos de proporção)
+  * skeleton-reveal (Varredura de raio-x revelando letras miúdas)
+  * svg-shape-morph (Metamorfose geométrica de promessa para armadilha)
+  * icon-flip-bloom (Giro 3D de ícone físico com rastro neon)
+- Transição:
+  * bottom-push-stack-wipe (Varredura vertical empurrando bloco anterior)
+
+=========================================
 SCHEMA DE SAÍDA OBRIGATÓRIO (JSON Puro):
 =========================================
 Retorne APENAS um objeto JSON válido (sem markdown ou texto adicional fora do JSON):
@@ -77,6 +118,7 @@ Retorne APENAS um objeto JSON válido (sem markdown ou texto adicional fora do J
   "id": "cena-01-identificador",
   "durationInFrames": 90,
   "layout": "monumental-punch" | "metric-authority" | "strike-redaction" | "binary-tension" | "forensic-callout",
+  "presetId": "cel-flash-stomp",
   "choreography": {
     "entryDirection": "bottom-up" | "left-glide" | "radial-burst" | "diagonal-flow",
     "drawSpeed": "snappy" | "smooth-draw",
@@ -84,7 +126,8 @@ Retorne APENAS um objeto JSON válido (sem markdown ou texto adicional fora do J
   },
   "artDirection": {
     "mood": "aggressive-alert" | "optimistic-growth" | "analytical-tech" | "mysterious-reveal",
-    "visualMetaphor": "Descrição física visceral da animação"
+    "visualMetaphor": "Descrição física visceral da animação",
+    "presetId": "cel-flash-stomp"
   },
   "elements": [ ... ]
 }
@@ -429,6 +472,7 @@ Importante:
 2. Defina uma das 6 silhuetas de layout (monumental-hero, horizontal-split, stacked-steps, blueprint-grifo, hud-radial, split-authority).
 3. Conecte elementos secundários via "anchorTo" e "compositionBridge" (sem elementos órfãos).
 4. Utilize escala proporcional relativa (sizeRatio).
+5. Opcionalmente, indique o "presetId" mais adequado dentre os 31 presets do Video-Shotcraft V1 (ex: "cel-flash-stomp", "basic-3d-scene", "title-demote-to-label", "counter-confetti", etc.).
 
 Retorne estritamente o JSON da cena conforme as regras e identidade OFurry.
 `.trim();

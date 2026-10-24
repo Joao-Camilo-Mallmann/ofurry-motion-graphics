@@ -1,0 +1,24 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+
+  </style>
+  <div id="root" data-composition-id="b03-icon" data-width="1920" data-height="1080">
+    <div id="b03-icon-ic" class="clip" data-start="0" data-duration="1.1" data-track-index="0" style="position:absolute;left:560px;width:800px;top:199px;display:flex;justify-content:center">
+      <div style="position:relative"><div id="b03-icon-ic-in" style="display:flex;flex-direction:column;align-items:center">
+        <div id="b03-icon-ic-svg" class="house-icon" style="color:#FF9900;filter: drop-shadow(0 0 38px #FF9900aa);"><svg xmlns="http://www.w3.org/2000/svg" width="380" height="380" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bitcoin" aria-hidden="true"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"></path></svg></div>
+        
+      </div></div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+      House.entry(tl, $("b03-icon-ic-in"), "pop", 0);
+
+      window.__timelines["b03-icon"] = tl;
+    })();
+  </script>
+</template>

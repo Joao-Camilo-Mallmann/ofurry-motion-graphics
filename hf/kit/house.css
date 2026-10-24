@@ -1,0 +1,100 @@
+/* OFurry house style para HyperFrames. Carregado uma vez no index.html (assets/house/house.css) pelo build.
+   Tokens iguais aos de src/house/theme.ts. Nunca colocar transform no CSS de algo que o GSAP move. */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/bebas-neue-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --bg: #000000;
+  --text: #fdfdfd;
+  --whisper: #8c8c8c;
+  --gain: #2ee04a;
+  --loss: #e3141b;
+  --highlight: #f4e812;
+  --brand: #ff9900;
+  --info: #22d3ee;
+  --font-caption: 'Montserrat', sans-serif;
+  --font-number: 'Bebas Neue', 'Montserrat', sans-serif;
+}
+.house-full { position: absolute; inset: 0; }
+.house-center { position: absolute; left: 0; right: 0; text-align: center; }
+.house-inline { display: inline-block; }
+
+/* Legenda cinetica */
+.house-caption {
+  font-family: var(--font-caption);
+  font-weight: 800;
+  font-size: 84px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.house-caption.is-whisper { font-weight: 300; font-size: 56px; color: var(--whisper); }
+.house-emph { color: var(--highlight); font-size: 1.25em; }
+.house-slice { position: absolute; left: 0; right: 0; top: 0; opacity: 0; }
+
+/* Icone */
+.house-icon { display: inline-block; line-height: 0; color: var(--text); }
+.house-icon svg { overflow: visible; }
+.house-label {
+  font-family: var(--font-caption);
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--text);
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 22px;
+}
+
+/* Numero-chave */
+.house-number {
+  font-family: var(--font-number);
+  font-size: 260px;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+.house-number-caption {
+  font-family: var(--font-caption);
+  font-weight: 800;
+  font-size: 46px;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+
+/* Capitulo e titulo de secao */
+.house-chapter-num { font-family: var(--font-number); font-size: 300px; line-height: 0.8; color: var(--brand); }
+.house-chapter-title {
+  font-family: var(--font-caption);
+  font-weight: 800;
+  font-size: 72px;
+  color: var(--text);
+  text-transform: uppercase;
+  max-width: 1100px;
+  line-height: 1.05;
+}
+.house-section {
+  font-family: var(--font-caption);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 54px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* Marcador cinza quando falta o arquivo (mascote, print) */
+.house-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#3a3a3a, #1c1c1c);
+  border: 3px dashed #666;
+  color: #999;
+  font-family: var(--font-caption);
+  font-weight: 800;
+}

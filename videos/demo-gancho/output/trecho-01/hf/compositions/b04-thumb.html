@@ -1,0 +1,23 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+
+  </style>
+  <div id="root" data-composition-id="b04-thumb" data-width="1920" data-height="1080">
+    <div id="b04-thumb-t" class="clip" data-start="0" data-duration="3.8" data-track-index="0" style="position:absolute;inset:0">
+      <div id="b04-thumb-t-in" style="position:absolute;inset:0"><img src="assets/media/thumb.jpg" alt="" style="width:1920px;height:1080px;object-fit:cover"></div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+      tl.fromTo($("b04-thumb-t-in"), { opacity: 0, scale: 1 }, { opacity: 1, scale: 1.02, duration: 1, ease: "power2.out" }, 0);
+      tl.fromTo($("b04-thumb-t-in"), { scale: 1.02 }, { scale: 1.08, duration: 2.8, ease: "none", immediateRender: false }, 1);
+      tl.fromTo($("b04-thumb-t-in"), { opacity: 1 }, { opacity: 0, duration: 0.66, ease: "power2.in", immediateRender: false }, 3.1);
+
+      window.__timelines["b04-thumb"] = tl;
+    })();
+  </script>
+</template>

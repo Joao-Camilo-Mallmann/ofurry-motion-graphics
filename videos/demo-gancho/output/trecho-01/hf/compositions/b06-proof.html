@@ -1,0 +1,30 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+
+  </style>
+  <div id="root" data-composition-id="b06-proof" data-width="1920" data-height="1080">
+    <div id="b06-proof-p" class="clip" data-start="0" data-duration="4.9" data-track-index="0" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center" data-layout-allow-overflow>
+      <div id="b06-proof-card" style="position:relative;width:1190px;box-shadow:0 0 0 2px rgba(255,255,255,.35),0 30px 120px rgba(255,255,255,.12);background:#111">
+        <div class="house-placeholder" style="width:100%;aspect-ratio:16/10;font-size:40px">PRINT DE PROVA</div>
+        <div id="b06-proof-hl" style="position:absolute;left:8%;top:12%;width:70%;height:18%;border:6px solid var(--loss);border-radius:6px;box-shadow:0 0 18px #e3141b88;clip-path:inset(-12px 100% -12px -12px)"></div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+      var card = $("b06-proof-card");
+      tl.fromTo(card, { rotationY: -30, rotationX: 14, transformPerspective: 1400, opacity: 0, filter: "blur(18px)", scale: 1.06 },
+        { rotationY: -6, rotationX: 4, opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.33, ease: "power3.out" }, 0);
+      tl.fromTo(card, { rotationY: -6 }, { rotationY: -1, scale: 1.04, duration: 4.47, ease: "power1.inOut", immediateRender: false }, 0.33);
+      tl.fromTo(card, { x: 28, filter: "hue-rotate(90deg) saturate(3)" }, { x: -22, filter: "hue-rotate(90deg) saturate(3)", duration: 0.067, immediateRender: false }, 4.8);
+      tl.fromTo(card, { opacity: 1 }, { opacity: 0, duration: 0.033, immediateRender: false }, 4.867);
+      tl.fromTo($("b06-proof-hl"), { clipPath: "inset(-12px 100% -12px -12px)" }, { clipPath: "inset(-12px 0% -12px -12px)", duration: 0.33, ease: "power2.out" }, 1.3);
+
+      window.__timelines["b06-proof"] = tl;
+    })();
+  </script>
+</template>

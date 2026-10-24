@@ -36,7 +36,7 @@ function parseArgs(): RenderOptions {
       trecho = t.startsWith('trecho-') ? t : `trecho-${t.padStart(2, '0')}`;
     } else if (arg === '--trecho') {
       const nextArg = args[i + 1];
-      if (nextArg && !nextArg.startsWith('-')) {
+      if (nextArg && (nextArg.toLowerCase().startsWith('trecho-') || /^\d+$/.test(nextArg))) {
         const t = nextArg.trim().toLowerCase();
         trecho = t.startsWith('trecho-') ? t : `trecho-${t.padStart(2, '0')}`;
         i++;
