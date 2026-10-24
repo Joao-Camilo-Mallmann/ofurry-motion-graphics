@@ -62,3 +62,6 @@ videos/**/hf/assets/fonts/
 videos/**/hf/assets/media/
 videos/**/hf/assets/narracao.*
 videos/**/render/
+
+# Links das skills para o Claude Code (recrie com: bun run skills:link)
+.claude/skills/

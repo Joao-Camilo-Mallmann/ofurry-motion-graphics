@@ -19,6 +19,7 @@ Requirements: [Bun](https://bun.sh), Node.js 22+, FFmpeg on the PATH (Python 3 o
 
 ```bash
 bun install
+bun run skills:link                               # link .agents/skills into .claude/skills (Claude Code)
 npx hyperframes@0.8.193 models install parakeet   # one-time: local Portuguese transcription
 ```
 
@@ -219,6 +220,7 @@ ofurry-motion/
 | `bun run house:lint <id> <XX>` | Check a section's `beats.json` against the house rules |
 | `bun run hf:build <id> <XX>` | Generate the HyperFrames project for a section |
 | `bun run hf:render <id> <XX> [--draft] [--so-preto \| --so-alpha]` | Check and render MP4 + transparent MOV |
+| `bun run skills:link` | Link `.agents/skills` into `.claude/skills` for Claude Code |
 | `bun run sync:lucide-animated` | Re-download and adapt the Lucide Animated icons |
 | `bun run reference:extract <folder>` | Analyse a reference video |
 | `bun run studio` | Remotion Studio (earlier sections, house demos `House-Demo-*`) |
