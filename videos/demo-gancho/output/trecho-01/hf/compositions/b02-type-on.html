@@ -1,0 +1,27 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+
+  </style>
+  <div id="root" data-composition-id="b02-type-on" data-width="1920" data-height="1080">
+    <div id="b02-type-on-txt" class="clip house-center house-caption" data-start="0" data-duration="2.05" data-track-index="0" style="top:488px">E O SEU FUTURO?</div>
+
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+      (function () {
+        var el = $("b02-type-on-txt"), full = "E O SEU FUTURO?";
+        House.drive(tl, 0, 2.05, function (t) {
+          var typed = Math.floor(t * 22), erased = 1 >= 0 && t > 1 ? Math.floor((t - 1) * 22 * 1.6) : 0;
+          var n = Math.max(0, Math.min(full.length, typed) - erased);
+          var caret = Math.floor(t * 2) % 2 === 0 ? "|" : "\u00a0";
+          el.textContent = full.slice(0, n) + caret;
+        });
+      })();
+
+      window.__timelines["b02-type-on"] = tl;
+    })();
+  </script>
+</template>

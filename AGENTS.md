@@ -7,6 +7,16 @@ This project (`ofurry-motion`) is a programmatic Editorial Motion Design engine 
 
 ## ⚡ Mandatory Directives for AI Agents
 
+### 0. Producao em duas skills + estilo da casa
+- **Organizar o video** (`.agents/skills/ofurry-organizar-video/SKILL.md`): pasta do video, transcricao com tempo por palavra, corte em trechos, `plano.md` em prosa para aprovacao. Comandos `bun run video:novo | video:transcrever | video:buscar | video:cortar | video:status`.
+- **Fazer as cenas** (`.agents/skills/ofurry-fazer-cenas/SKILL.md`): so com `plano.md` APROVADO. Escreve `beats.json`, `bun run hf:build <video> <XX>` gera o projeto **HyperFrames** (HTML + GSAP, motor padrao para videos novos), `bun run hf:render <video> <XX>` entrega MP4 preto + MOV transparente. Skills oficiais do HyperFrames em `.agents/skills/hyperframes*` (contrato de render).
+
+### 0.1 Estilo da casa primeiro (`ofurry-house-motion`)
+- **Fonte de verdade do visual do canal**: `.agents/skills/ofurry-house-motion/SKILL.md`, medida nos 7 videos publicados (`docs/referencias/analise-canal-2026-10.md`).
+- **Em conflito, ela vence**: tipografia Montserrat + Bebas Neue (nao Archivo/Space Grotesk), legenda de 84 px com 1-2 palavras (nao 130-160 px), mascote como batida, cores por significado (verde ganho, vermelho perda, amarelo destaque, laranja marca).
+- **Fluxo**: narracao -> `ofurry-organizar-video` (trechos + plano aprovado) -> `ofurry-fazer-cenas` (beats.json -> HyperFrames -> MP4 + MOV alpha). O kit Remotion `src/house/` le o mesmo beats e fica para os trechos antigos.
+- **Icones**: Lucide (estatico) e Lucide Animated deterministico (`src/lucide-animated/`, `<AnimatedLucide>`).
+
 ### 1. Act as the Diretor Orquestrador (`/director-orchestrator`)
 Whenever processing script narration or building motion scenes:
 - **Creative Director First, Never a Code Dumper**: PROIBIDO retornar código Remotion/TSX como output principal da skill. A resposta primária deve ser exclusivamente o **Plano Visual Editorial / Checkpoint** estruturado em prosa. O código só existe após a aprovação humana.
@@ -87,3 +97,7 @@ videos/<video-name>/
 - **Render Video Scenes (WebM Alpha)**: `bun run render:video <video-id> --format=webm`
 - **Render Video Scenes (ProRes 4444 Alpha)**: `bun run render:video <video-id> --format=prores`
 - **Check TypeScript Types**: `bun run build`
+- **Lint da folha de batidas (estilo da casa)**: `bun run house:lint [id]`
+- **Render de uma folha (preto / alpha)**: `bun run render:house <id> out/<id>.mp4` e `bun run render:house <id>-Alpha out/<id>.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le --image-format=png`
+- **Atualizar icones animados**: `bun run sync:lucide-animated`
+- **Analisar um video de referencia**: `bun run reference:extract <pasta-com-video.mp4>`

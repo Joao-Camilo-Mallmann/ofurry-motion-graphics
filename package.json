@@ -21,7 +21,18 @@
     "render:trecho:webm": "bun run scripts/render-scenes.ts --format=webm --trecho",
     "render:trecho:prores": "bun run scripts/render-scenes.ts --format=prores --trecho",
     "sync:icons": "bun run scripts/sync-icons.ts",
-    "build": "tsc --noEmit"
+    "build": "tsc --noEmit",
+    "sync:lucide-animated": "bun run scripts/sync-lucide-animated.ts",
+    "reference:extract": "python -I scripts/reference/extract-motion.py",
+    "house:lint": "bun run scripts/house-lint.ts",
+    "render:house": "remotion render src/index.ts",
+    "hf:build": "bun run scripts/hf/build-trecho.ts",
+    "hf:render": "bun run scripts/hf/render-trecho.ts",
+    "video:novo": "bun run scripts/video/novo-video.ts",
+    "video:transcrever": "bun run scripts/video/transcrever.ts",
+    "video:buscar": "bun run scripts/video/buscar.ts",
+    "video:cortar": "bun run scripts/video/cortar-trecho.ts",
+    "video:status": "bun run scripts/video/status.ts"
   },
   "dependencies": {
     "@fontsource/archivo-black": "^5.3.0",

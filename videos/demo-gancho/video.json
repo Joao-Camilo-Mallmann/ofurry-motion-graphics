@@ -1,0 +1,7 @@
+{
+  "id": "demo-gancho",
+  "titulo": "Demo: gancho do video 'VOCE tem ate 2030' refeito com o kit da casa",
+  "trechos": [
+    { "id": "trecho-01", "titulo": "Gancho (0-47 s)", "inicio": 0, "fim": 47, "bloco": "GANCHO" }
+  ]
+}

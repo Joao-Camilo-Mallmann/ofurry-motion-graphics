@@ -13,6 +13,12 @@ Skill oficial de **Direção Criativa e Curadoria Editorial Cinematográfica** p
 
 ---
 
+> [!IMPORTANT]
+> **Estilo da casa primeiro.** Antes de propor qualquer plano, leia `.agents/skills/ofurry-house-motion/SKILL.md`.
+> Ela descreve o visual que o canal de fato publica (medido nos 7 videos) e vence qualquer regra desta skill
+> que entre em conflito (tipografia, tamanho de legenda, uso do mascote, cores). O checkpoint em prosa
+> continua obrigatorio; a implementacao passa a ser uma folha de batidas do kit `src/house/`.
+
 ## 1. PAPEL DA SKILL
 
 A `director-orchestrator` **NÃO** deve ser uma geradora antecipada de código.

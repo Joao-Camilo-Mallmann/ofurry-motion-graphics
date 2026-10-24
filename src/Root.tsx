@@ -15,6 +15,9 @@ import { SceneSpec } from './director/schema';
 import { getAllVideos } from './videos/registry';
 import { VideoScene, isBespokeScene } from './videos/types';
 import { SHOTCRAFT_V1_PRESETS } from './presets';
+import { LucideAnimatedShowcase } from './lucide-animated/LucideAnimatedShowcase';
+import { HouseTimeline } from './house/HouseTimeline';
+import { HOUSE_SHEETS } from './house/sheets';
 
 export interface MainVideoProps {
   scenes: VideoScene[];
@@ -225,6 +228,44 @@ export const RemotionRoot: React.FC = () => {
           </React.Fragment>
         );
       })}
+
+      {/* Estilo da casa: folhas de batidas (skill ofurry-house-motion) */}
+      {HOUSE_SHEETS.map((sheet) => {
+        const fps = sheet.fps ?? OFurryTheme.layout.fps;
+        return (
+          <React.Fragment key={sheet.id}>
+            <Composition
+              id={sheet.id}
+              component={HouseTimeline as unknown as React.FC<Record<string, unknown>>}
+              durationInFrames={Math.round(sheet.duration * fps)}
+              fps={fps}
+              width={OFurryTheme.layout.width}
+              height={OFurryTheme.layout.height}
+              defaultProps={{ sheet, transparent: false }}
+            />
+            <Composition
+              id={`${sheet.id}-Alpha`}
+              component={HouseTimeline as unknown as React.FC<Record<string, unknown>>}
+              durationInFrames={Math.round(sheet.duration * fps)}
+              fps={fps}
+              width={OFurryTheme.layout.width}
+              height={OFurryTheme.layout.height}
+              defaultProps={{ sheet, transparent: true }}
+            />
+          </React.Fragment>
+        );
+      })}
+
+      {/* Teste do Lucide Animated deterministico */}
+      <Composition
+        id="LucideAnimated-Showcase"
+        component={LucideAnimatedShowcase as unknown as React.FC<Record<string, unknown>>}
+        durationInFrames={180}
+        fps={OFurryTheme.layout.fps}
+        width={OFurryTheme.layout.width}
+        height={OFurryTheme.layout.height}
+        defaultProps={{ transparent: false }}
+      />
 
       {/* ========================================================= */}
       {/* SHOTCRAFT V1 PRESETS SHOWCASE & COMPOSIÇÕES INDIVIDUAIS   */}

@@ -49,3 +49,16 @@ Thumbs.db
 .cache/
 .temp/
 .tmp/
+
+# Cache do build HyperFrames
+scripts/hf/.cache/
+
+# Producao de video (HyperFrames): arquivos pesados ou regenerados pelo build
+videos/**/midia/*.wav
+videos/**/midia/.hf-transcribe/
+videos/**/hf/.hyperframes/
+videos/**/hf/assets/house/
+videos/**/hf/assets/fonts/
+videos/**/hf/assets/media/
+videos/**/hf/assets/narracao.*
+videos/**/render/

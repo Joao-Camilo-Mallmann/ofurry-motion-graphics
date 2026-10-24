@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+
+  </style>
+  <div id="root" data-composition-id="poeira" data-width="1920" data-height="1080">
+    <canvas id="poeira-canvas" class="clip" data-start="0" data-duration="47" data-track-index="0" width="1920" height="1080" style="position:absolute;inset:0;opacity:0.5" data-layout-ignore></canvas>
+
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+      (function () {
+        var cv = $("poeira-canvas"), cx = cv.getContext("2d");
+        House.drive(tl, 0, 47, function (t) {
+          var f = Math.floor(t * 15), rnd = House.rng("poeira-" + f);
+          cx.clearRect(0, 0, 1920, 1080);
+          cx.fillStyle = "#fff";
+          for (var i = 0; i < 26; i++) {
+            var x = rnd() * 1920, y = rnd() * 1080, r = 0.6 + rnd() * 2.2;
+            cx.globalAlpha = 0.35 + rnd() * 0.5;
+            cx.beginPath(); cx.arc(x, y, r, 0, Math.PI * 2); cx.fill();
+          }
+          if (rnd() > 0.7) { var sx = rnd() * 1920; cx.globalAlpha = 0.18; cx.fillRect(sx, 0, 1.2, 1080); }
+          cx.globalAlpha = 1;
+        });
+      })();
+
+      window.__timelines["poeira"] = tl;
+    })();
+  </script>
+</template>
