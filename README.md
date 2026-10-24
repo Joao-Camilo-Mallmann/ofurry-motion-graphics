@@ -76,7 +76,7 @@ The agent presents every plan in prose and waits for your approval before writin
 | `ofurry-organizar-video` | Creates the video folder, transcribes, cuts sections, writes `plano.md` for approval |
 | `ofurry-fazer-cenas` | Writes `beats.json`, generates the HyperFrames project, reviews and renders |
 | `hyperframes`, `hyperframes-cli`, `hyperframes-registry`, `media-use`, `remotion-to-hyperframes` | Official HyperFrames skills: render contract, CLI, ~450 ready-made blocks, media, porting from Remotion |
-| `director-orchestrator`, `motion-design`, `video-shotcraft`, `icon-craft` | Earlier Remotion-era skills; where they conflict with `ofurry-house-motion`, the house style wins |
+| `director-orchestrator`, `motion-design`, `icon-craft` | Earlier Remotion-era skills; where they conflict with `ofurry-house-motion`, the house style wins. The `video-shotcraft` skill was removed (its 31 camera presets live on in `src/presets/`). |
 
 ---
 

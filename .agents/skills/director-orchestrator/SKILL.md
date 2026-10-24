@@ -1,6 +1,6 @@
 ---
 name: director-orchestrator
-description: Directs and orchestrates incremental editorial motion design productions for OFurry by transforming script sections into cinematic shot proposals using motion-design and video-shotcraft, enforcing anti-AI/anti-SaaS aesthetics on native alpha with zero premature code.
+description: Directs and orchestrates incremental editorial motion design productions for OFurry by transforming script sections into cinematic shot proposals using motion-design and the camera presets in src/presets, enforcing anti-AI/anti-SaaS aesthetics on native alpha with zero premature code.
 license: MIT
 metadata:
   author: OFurry Motion Lab
@@ -52,7 +52,7 @@ A resposta principal da skill deve apresentar exclusivamente o **Plano Visual Ed
 Para criar as propostas visuais, utilize obrigatoriamente a combinação de três skills essenciais:
 
 1. **`motion-design`** (Física e Comportamento Editorial)
-2. **`video-shotcraft`** (Cinematografia e Linguagem de Câmera)
+2. **Presets de câmera** em `src/presets/` (Cinematografia e Linguagem de Câmera; a skill `video-shotcraft` foi removida em 2026-10, catálogo em `docs/presets/shotcraft-v1.md`)
 3. **`icon-craft`** (Metáforas Físicas, Ícones & Simbolismo de Mercado)
 
 ### Divisão de Responsabilidades:
@@ -60,7 +60,7 @@ Para criar as propostas visuais, utilize obrigatoriamente a combinação de trê
 | Motor | Responsabilidade | Ferramental |
 |---|---|---|
 | **`motion-design`** | Física, dinâmica e autoridade tipográfica | • Damped springs (`snappy`, `smooth`)<br>• Overshoot e settle calibrados<br>• Escala monumental (130-160px texto, 200-240px números)<br>• 3 camadas de movimento (Primary Hero, Secondary Highlight, Ambient Alpha)<br>• Timing de retenção (0-15f snap, 15-final hold com micro-drift) |
-| **`video-shotcraft`** | Câmera, espaço e cinematografia | • Câmera 2.5D (tilt, perspective 1000px, parallax drift)<br>• Enquadramentos dinâmicos (push-in, crash zoom, orbit, whip-pan)<br>• Catálogo de 157 shot recipe cards (`references/shots/`)<br>• Ritmo, cadência e cortes motivados por ação<br>• Sound Design com SFX pontuais (`assets/audio/sfx/`) |
+| **Presets de câmera (`src/presets/`)** | Câmera, espaço e cinematografia | • Câmera 2.5D (tilt, perspective 1000px, parallax drift)<br>• Enquadramentos dinâmicos (push-in, crash zoom, orbit, whip-pan)<br>• 31 presets auditados com composições `Preset-XX-*` no Studio<br>• Ritmo, cadência e cortes motivados por ação<br>• SFX: `.agents/skills/media-use/audio/assets/sfx/` |
 | **`icon-craft`** | Metáforas físicas tangíveis e símbolos | • Catálogo de 55 ícones físicos (`public/icons/`)<br>• Alto contraste no canal Alpha via `<AssetIcon />`<br>• Inversão de pretos para branco (`variant="white"`), neon orange (`variant="orange"`), nativo (`variant="original"`)<br>• 1 ícone monumental dominante (140-300px) ou âncora travada à métrica |
 
 A `director-orchestrator` funde esses três motores:

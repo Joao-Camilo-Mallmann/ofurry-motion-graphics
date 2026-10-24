@@ -94,12 +94,6 @@
       "skillPath": "skills/remotion-to-hyperframes/SKILL.md",
       "computedHash": "25ce0ef77a7a307949d8a89283c836e0bd9691c765dfd5fe45392a92f3c0f869"
     },
-    "video-shotcraft": {
-      "source": "Vincentwei1021/video-shotcraft",
-      "sourceType": "github",
-      "skillPath": "SKILL.md",
-      "computedHash": "3fbb2b0cc47d32416ae8ae96ca996a16c05721a5b4736b710d7ccda4c08f5365"
-    },
     "ofurry-organizar-video": {
       "source": "local",
       "sourceType": "workspace",

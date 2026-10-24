@@ -24,10 +24,10 @@ Whenever processing script narration or building motion scenes:
 - **Roteiro Como Única Fonte Persistente de Contexto**: A skill lê `videos/<video>/roteiro.md` para identificar o próximo trecho a ser produzido. **NÃO consome o código ou implementações dos trechos anteriores.** Continuidade narrativa e vetorial sem dependência de código.
 - **Granularidade Cinematográfica**: Cada trecho é composto por tomadas de 3s a 5s (90-150 frames) que formam uma corrente audiovisual contínua com a locução.
 
-### 2. Mandatory Triple Visual Engine: `/motion-design` + `video-shotcraft` + `icon-craft`
-Every scene must fuse editorial physics, camera cinematography, and visceral physical metaphors:
+### 2. Legado Remotion: `/motion-design` + presets de câmera + `icon-craft`
+Para os trechos antigos em Remotion (COE trecho-01 a 04). Em videos novos, o estilo da casa (seção 0.1) vence.
 - **`motion-design` (Física & Comportamento)**: Damped springs (`snappy`, `smooth`), timing 0-15f punch / 15-final hold com micro-drift, 3 camadas de movimento, tipografia monumental (130px-160px) e métricas (200px-240px).
-- **`video-shotcraft` (Câmera & Cinematografia + Catálogo de 31 Presets V1)**: Câmera 2.5D (tilt, perspective 1000px, parallax drift), enquadramentos dinâmicos (push-in, crash zoom, orbit, whip), 157 shot recipes, curva de energia (`promo-energy-arc`), cortes motivados pela ação e Sound Design cirúrgico.
+- **Presets de câmera (`src/presets/`, ver `docs/presets/shotcraft-v1.md`)**: Câmera 2.5D (tilt, perspective 1000px, parallax drift), enquadramentos dinâmicos (push-in, crash zoom, orbit, whip). Vieram da skill `video-shotcraft`, removida do projeto em 2026-10 (reinstalável com `npx skills add Vincentwei1021/video-shotcraft`).
   - **Catálogo de 31 Presets V1 (`src/presets/`)**: Usar os 31 presets auditados (`basic-3d-scene`, `cel-flash-stomp`, `countdown-arc-scatter`, `title-demote-to-label`, etc.) com preview em vídeo em `public/presets/videos/[preset-id].mp4` e composições isoladas `Preset-[XX]-[id]` no Studio.
 - **`icon-craft` (Metáforas Físicas & Ícones)**: Catálogo de 55 ícones físicos (`public/icons/`). Renderização com alto contraste sobre canal Alpha via `<AssetIcon />`: inversão de pretos para branco puro (`variant="white"`), colorização neon `#FF9900` (`variant="orange"`), ou cores nativas (`variant="original"`). Proibido ícones como mini-badges ou em cards SaaS; sempre como 1 metáfora dominante (140px-300px) ou âncora rígida.
 - **Core Question**: *"Qual plano cinematográfico e metáfora física melhor comunicam esta frase?"* (e não *"Qual layout colocar?"*).
@@ -69,7 +69,7 @@ videos/<video-name>/
    - `jakarta` (`Plus Jakarta Sans`): Micro-labels de alta precisão (14px).
 4. **Anti-"AI Slop" / Zero Cards**: High contrast solid black (#000000), solid neon orange blocks (#FF9900) with pure black text (#000000), zero grey background cards (`rgba(20,20,20,...)`), zero container boxes, zero generic blur clouds, zero default grids.
 5. **Native Alpha Channel**: Transparent background output in ProRes 4444 (`.mov`) or WebM.
-6. **Cinematography & 2.5D Camera**: Use camera moves from `video-shotcraft` (push-in, crash-zoom, subtle 2.5D tilt/orbit, parallax drift). Proibido rotação senoidal amadora (`amplitudeRotate: 0`).
+6. **Cinematography & 2.5D Camera**: Use camera moves dos presets em `src/presets/` (push-in, crash-zoom, subtle 2.5D tilt/orbit, parallax drift). Proibido rotação senoidal amadora (`amplitudeRotate: 0`).
 7. **Impact & Full-Timeline Fluidity (Anti-Freeze)**:
    - **Entrada (0-15 frames):** Mask Reveal da linha de base (`overflow: hidden`) ou snap seco com spring firme.
    - **Fluidez Contínua (15-final):** Movimento orgânico contínuo (pulsação suave, ondas de luz/gradiente e micro-flutuação visível), sem estagnação.
@@ -82,7 +82,7 @@ videos/<video-name>/
 ## 🔄 Incremental Production Workflow
 
 1. **Leitura do Roteiro**: Inspecionar `videos/<video>/roteiro.md` e identificar o próximo trecho a ser produzido.
-2. **Concepção Cinematográfica**: Fundir `motion-design` + `video-shotcraft` + `no-ai-slop`.
+2. **Concepção Cinematográfica**: Fundir `ofurry-house-motion` + `motion-design` + presets de câmera (`src/presets/`) + `no-ai-slop`.
 3. **Checkpoint Editorial em Prosa**: Apresentar ao usuário o plano cinematográfico detalhado (Locução, Ideia, Metáfora, Shot, Câmera, Motion, Composição, Tipografia, Continuidade, SFX, Energia, Elementos Proibidos). **NÃO gerar código.**
 4. **Geração Modular Pós-Aprovação**: Criar `output/trecho-XX/concept.md` e os arquivos Remotion em `output/trecho-XX/scenes/`.
 5. **Alpha Render**: Renderizar as cenas em `output/trecho-XX/render/` via `bun run render:trecho <video> <XX> --format=webm|prores`.

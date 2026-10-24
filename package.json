@@ -5,13 +5,6 @@
   "private": true,
   "scripts": {
     "studio": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts OFurryComposition out/video.mp4",
-    "render:sample": "remotion render src/index.ts OFurryComposition out/sample.mp4",
-    "render:coe": "remotion render src/index.ts COEComposition out/coe-intro.mp4",
-    "render:full": "remotion render src/index.ts COEComposition out/coe-full.mp4",
-    "render:bloco3": "remotion render src/index.ts KineticBloco3-Full-38s out/bloco3-full.mp4",
-    "render:bloco3:webm": "remotion render src/index.ts KineticBloco3-Full-38s out/bloco3-full.webm --pixel-format=yuva420p --codec=vp9 --image-format=png",
-    "render:bloco3:prores": "remotion render src/index.ts KineticBloco3-Full-38s out/bloco3-full.mov --pixel-format=yuva444p10le --codec=prores --prores-profile=4444 --image-format=png",
     "render:scenes": "bun run scripts/render-scenes.ts --format=prores",
     "render:scenes:webm": "bun run scripts/render-scenes.ts --format=webm",
     "render:scenes:mp4": "bun run scripts/render-scenes.ts --format=mp4",
